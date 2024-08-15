@@ -31,7 +31,7 @@ Each task has the following properties:
 
 ## Command Examples
 
-- **Adding a new task**
+- **Code Examples**
 
   ```bash
     task-cli.py add "Buy groceries"
