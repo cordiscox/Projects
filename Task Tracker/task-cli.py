@@ -39,6 +39,7 @@ def add(args):
 
     with open("todo.json", "w") as file:
         json.dump(existing_data, file, indent=4)
+        print(f"task {new_data["description"]} was added with ID {new_data["id"]}.")
 
         
 def update(args):
