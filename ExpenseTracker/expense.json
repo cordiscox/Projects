@@ -1,0 +1,128 @@
+[
+    {
+        "ID": 1,
+        "Description": "asd",
+        "Amount": 10,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 2,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 3,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 4,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 5,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 6,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 7,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 8,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 9,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 10,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 11,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 12,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 13,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 14,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 16,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 17,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 18,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 19,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 20,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 21,
+        "Description": "New expense",
+        "Amount": 50,
+        "Date": "2024-08-18"
+    },
+    {
+        "ID": 22,
+        "Description": "casa",
+        "Amount": 2345,
+        "Date": "2024-08-19"
+    }
+]
