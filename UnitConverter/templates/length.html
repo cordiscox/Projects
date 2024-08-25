@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+
+{% block title %} Length {% endblock %}
+
+{% block content %}
+<form method="post">
+    <label for="unit">Enter the length to convert</label>
+    <input type="text" id="unit" name="unit" required>
+
+    <label for="unit-from">Unit to Convert from:</label>
+        <select id="unit-from" name="unit-from">
+            {% for k,v in context.lengths.items() %}
+            <option value={{ k }}>{{v}}</option>
+            {% endfor %}
+        </select>
+    
+    <label for="unit-to">Unit to Convert to:</label>
+    <select id="unit-to" name="unit-to">
+        {% for k,v in context.lengths.items() %}
+        <option value={{ k }}>{{v}}</option>
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="Convert">
+</form>
+{% endblock %}

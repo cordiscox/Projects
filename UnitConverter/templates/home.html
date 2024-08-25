@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>{% block title %}Converter{% endblock %}</title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        </head>
+    <body>
+        <div class="content">
+            <div class="tabs">
+                <a href="{{ url_for('length') }}" class="tablink">Length</a>
+                <a href="{{ url_for('temperature') }}" class="tablink">Temperature</a>
+                <a href="{{ url_for('weight') }}" class="tablink">Weight</a>
+            </div>
+
+            <div class="tabcontent">
+                {% block content %}
+                <!-- El contenido específico de cada pestaña se insertará aquí -->
+                {% endblock %}
+            </div>
+        </div>
+
+        <!--<script src="{{ url_for('static', filename='script.js') }}"></script> -->
+    </body>
+</html>
