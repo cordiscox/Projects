@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Personal Blog {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>New Post</h1>
+    <form action="/new_post" method="post">
+        <div class="form-group">
+            <label for="title">Article Title</label>
+            <input placeholder="Post Title" type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="date">Publishing Date</label>
+            <input placeholder="date" type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea placeholder="content" id="content" name="content" rows="10" required></textarea>
+        </div>
+        <button type="submit">Publish</button>
+    </form>
+</div>
+
+{% endblock %}

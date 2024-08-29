@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} Personal Blog {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Personal Blog</h1>
+    <ul class="article-list">
+        {% for item in context %}
+            <li>
+                <a href="/article/{{ item['id'] }}">{{ item['title'] }}</a>
+                <span class="date">{{ item['createdAt'] }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
