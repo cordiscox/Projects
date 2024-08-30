@@ -7,6 +7,8 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 from config import Config
 import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 account_sid = Config.account_sid
 auth_token = Config.auth_token
@@ -14,7 +16,15 @@ twilio_number = Config.twilio_number
 my_number = Config.my_number
 
 client = Client(account_sid, auth_token)
-driver = webdriver.Chrome()
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # Ejecutar en modo headless
+chrome_options.add_argument("--disable-gpu")  # Desactivar GPU (opcional)
+chrome_options.add_argument("--window-size=1920x1080")  # Definir un tamaño de ventana (opcional)
+chrome_options.add_argument("--no-sandbox")  # Añadir esta opción si tienes problemas de permisos
+chrome_options.add_argument("--disable-dev-shm-usage")  # Para evitar problemas en sistemas con poca memoria compartida
+
+driver = webdriver.Chrome(options=chrome_options)
 
 try:
     driver.get("https://turnos.institutomedicodelosarroyos.com.ar/turnos-1.php")
@@ -51,6 +61,7 @@ try:
         next_month.click()
     
     count, max_count = 0, 2
+    disponible = False
     while count < max_count:
         try:
             disponibilidad = WebDriverWait(driver, 10).until(
@@ -64,11 +75,15 @@ try:
             #print(dispo.get_attribute("innerHTML"))
             if "DISPONIBLE" in dispo.get_attribute("innerHTML"):
                 message = client.messages.create(
-                from_= twilio_number,
-                body='Hay Turno para la doctora',
-                to=my_number
-                )
-                break
+                    from_= twilio_number,
+                    body='Hay Turno para la doctora',
+                    to=my_number
+                    )
+                disponible = True 
+        
+        if disponible:
+            break
+        
         next_month = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, '//*[@id="divgrillaturno"]/div[3]/div[1]/div[2]/div[2]'))
         )
