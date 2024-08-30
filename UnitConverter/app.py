@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect
+from flask import Flask, request
 from flask import render_template
 from dotenv import load_dotenv
 from converter import Converter
