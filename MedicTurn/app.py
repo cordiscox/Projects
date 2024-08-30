@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 from config import Config
+import time
 
 account_sid = Config.account_sid
 auth_token = Config.auth_token
@@ -13,7 +14,6 @@ twilio_number = Config.twilio_number
 my_number = Config.my_number
 
 client = Client(account_sid, auth_token)
-
 driver = webdriver.Chrome()
 
 try:
@@ -38,6 +38,7 @@ try:
     )
     ok_button.click()
 
+
     # Si no encuentra días, pasa al próximo mes
     try:
         dias = WebDriverWait(driver, 2).until(
@@ -48,19 +49,32 @@ try:
             EC.presence_of_element_located((By.CLASS_NAME, 'flecha-der-dia'))
         )
         next_month.click()
+    
+    count, max_count = 0, 2
+    while count < max_count:
+        try:
+            disponibilidad = WebDriverWait(driver, 10).until(
+                    EC.presence_of_all_elements_located((By.CLASS_NAME, 'tooltip-style3'))
+                )
+        except TimeoutException:
+            print("No hay mas disponibilidades")
+            break
 
-    disponibilidad = WebDriverWait(driver, 10).until(
-            EC.presence_of_all_elements_located((By.CLASS_NAME, 'tooltip-style3'))
+        for dispo in disponibilidad:
+            #print(dispo.get_attribute("innerHTML"))
+            if "DISPONIBLE" in dispo.get_attribute("innerHTML"):
+                message = client.messages.create(
+                from_= twilio_number,
+                body='Hay Turno para la doctora',
+                to=my_number
+                )
+                break
+        next_month = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="divgrillaturno"]/div[3]/div[1]/div[2]/div[2]'))
         )
-
-    for dispo in disponibilidad:
-        print(dispo.get_attribute("innerHTML"))
-        if "DISPONIBLE" in dispo.get_attribute("innerHTML"):
-            message = client.messages.create(
-            from_= twilio_number,
-            body='Hay Turno para la doctora',
-            to=my_number
-            )
+        next_month.click()
+        time.sleep(0.5)
+        count += 1
 
 finally:
     driver.quit()
