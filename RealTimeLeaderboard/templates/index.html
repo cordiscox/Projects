@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Aside -->
+      <div class="col-md-3 col-sm-12 mb-4">
+        <aside>
+          {% for id, game in all_games.items() %}
+            <div class="mb-1">
+              <a href="/ranking/{{ game.title }}" id="title">
+                <span>{{ game.title }}</span>
+                <img src="{{ game.img }}" alt="{{ game.title }}" class="img-fluid">
+              </a>
+            </div>
+          {% endfor %}
+        </aside>
+      </div>
+      
+      <!-- Ranking -->
+      <div class="col-md-9 col-sm-12">
+        {% include "ranking.html" %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+<div class="row">
+    {% for game_name, game_rankings in rankings.items() %}
+      <!-- Tabla para cada juego -->
+      <div class="col-md-6 mb-3">
+        <h2>{{ game_name }}</h2>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Puntuación</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ranking in game_rankings %}
+              <tr>
+                <td>{{ ranking.user_name }}</td>
+                <td>{{ ranking.score }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endfor %}
+</div>
